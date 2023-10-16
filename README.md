@@ -1,2 +1,11 @@
-# template-hackathon-python-fastapi
-Template for Hackathon with Python | FastAPI
+# TODO
+
+Replace:
+- `appName` with application name
+- `appDescription` with application description.
+
+Remove `TODO` blocks.
+
+# appName
+
+appDescription.
