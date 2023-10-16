@@ -20,4 +20,6 @@ COPY ./app /code/app
 
 EXPOSE 8080
 
+LABEL org.opencontainers.image.vendor="AI RnD Lab"
+
 CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8080"]

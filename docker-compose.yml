@@ -2,6 +2,6 @@ name: appName-compose
 
 services:
   appName:
-    image: appName:0.1.0
+    image: airndlab/appName:0.1.0
     ports:
       - 8081:8080
