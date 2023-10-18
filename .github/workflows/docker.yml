@@ -48,5 +48,6 @@ jobs:
 
       - name: Tag and push to Yandex Cloud Container Registry
         run: |
+          docker pull ${{ env.IMAGE }}
           docker tag ${{ env.IMAGE }} ${{ env.YCR_IMAGE }}
           docker push ${{ env.YCR_IMAGE }}
