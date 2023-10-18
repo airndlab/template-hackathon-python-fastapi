@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IMAGE_REPOSITORY: ${{ github.repository }}
-      YCR_IMAGE: cr.yandex/${{ secrets.YC_CONTAINER_REGISTRY_ID }}/${{ github.repository }}:${{ github.ref_name }}
+      YCR_IMAGE: cr.yandex/${{ secrets.YC_CONTAINER_REGISTRY_ID }}/${{ github.repository }}
 
     steps:
       - name: Checkout repository
