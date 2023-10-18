@@ -11,7 +11,7 @@ async def root():
 
 
 # TODO: Remove
-@app.get("/logic")
+@app.get("/api/logics")
 async def root():
     result = logic.do_logic()
     return {"result": result}
