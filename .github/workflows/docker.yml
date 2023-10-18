@@ -8,6 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_REPOSITORY: ${{ github.repository }}
+      IMAGE_TAG: ${{ github.ref_name }}
+      IMAGE: ${{ env.IMAGE_REPOSITORY }}:${{ env.IMAGE_TAG }}
+      YCR_IMAGE: cr.yandex/${{ secrets.YC_CONTAINER_REGISTRY_ID }}/${{ env.IMAGE }}
 
     steps:
       - name: Checkout repository
@@ -23,7 +28,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ github.repository }}
+          images: |
+            ${{ env.IMAGE_REPOSITORY }}
+            ${{ env.YCR_IMAGE }}
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -31,7 +38,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Login to Yandex Cloud Container Registry
+        uses: yc-actions/yc-cr-login@v1
+        with:
+          yc-sa-json-credentials: ${{ secrets.YC_SERVICE_ACCOUNT_KEY_FILE }}
+
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           push: true
