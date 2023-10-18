@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      IMAGE: ${{ github.repository }}:${{ github.ref_name }}
+      IMAGE: docker.io/${{ github.repository }}:${{ github.ref_name }}
       YCR_IMAGE: cr.yandex/${{ secrets.YC_CONTAINER_REGISTRY_ID }}/${{ github.repository }}:${{ github.ref_name }}
 
     steps:
