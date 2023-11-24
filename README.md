@@ -31,6 +31,9 @@ YC_SERVICE_ACCOUNT_KEY_FILE={content of sa-key.json}
 YC_CONTAINER_REGISTRY_ID={cr_id}
 ```
 
+- `cr_id` - id of container registry from Yandex Cloud
+- `sa-key.json` - authorized key of service account from Yandex Cloud
+
 ### Workflow
 
 Add this snapshot to `.github/workflows/docker.yml`:
